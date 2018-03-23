@@ -25,8 +25,12 @@ namespace Fichero
                 opcion = Convert.ToInt32(Console.ReadLine());
                 if (opcion==1)
                 {
-                    Console.WriteLine("Elije al formato :"+"\n"+"1.Texto"+"\n"+"2.Json"+"\n"+"3.Xml");
-                    int formato = Convert.ToInt32(Console.ReadLine());
+                    //Console.WriteLine("Elije al formato :"+"\n"+"1.Texto"+"\n"+"2.Json"+"\n"+"3.Xml");
+                    //int formato = Convert.ToInt32(Console.ReadLine());
+                    alumno = new Alumno();
+                    string registro = String.Format(alumno.Id + "," + alumno.Nombre + "," + alumno.Apellidos + "," + alumno.Dni.ToString());
+                    fichero.WriteLine(registro);
+                    /*
                     switch (formato)
                     {
                         case 1:
@@ -36,11 +40,8 @@ namespace Fichero
                         case 3:
                             break;
                         default:
-                            alumno = new Alumno();
-                            string registro = String.Format(alumno.Id + "," + alumno.Nombre + "," + alumno.Apellidos + "," + alumno.Dni.ToString());
-                            fichero.WriteLine(registro);
                             break;
-                    }
+                    }*/
                    
                 }
 
