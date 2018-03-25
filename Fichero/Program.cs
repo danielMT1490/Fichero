@@ -3,52 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+using System.Configuration;
 
 namespace Fichero
 {
     class Program
     {
+        public enum Opcion { Registrar=1,Salir}
+       
         static void Main(string[] args)
         {
-            FileStream flujo = new FileStream("Registro.txt",FileMode.Create,FileAccess.Write);
-            StreamWriter fichero = new StreamWriter(flujo);
-          
+            Formato formato = new Formato();
             
-            Alumno alumno;
             int opcion=1;
             do
             {
-
                 Console.WriteLine("Que quiere hacer :");
-                Console.WriteLine("1.Registrar alumno" + "\n" + "0.Sair");
+                Console.WriteLine("1.Registrar alumno" + "\n" + "2.Salir");
                 opcion = Convert.ToInt32(Console.ReadLine());
-                if (opcion==1)
+                switch ((Opcion)opcion)
                 {
-                    //Console.WriteLine("Elije al formato :"+"\n"+"1.Texto"+"\n"+"2.Json"+"\n"+"3.Xml");
-                    //int formato = Convert.ToInt32(Console.ReadLine());
-                    alumno = new Alumno();
-                    string registro = String.Format(alumno.Id + "," + alumno.Nombre + "," + alumno.Apellidos + "," + alumno.Dni.ToString());
-                    fichero.WriteLine(registro);
-                    /*
-                    switch (formato)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        default:
-                            break;
-                    }*/
-                   
+                    case Opcion.Registrar:
+                        Registro.Registrar(formato.CambiarFormato());
+                        break;
+                    case Opcion.Salir:
+                        break;
+                    default:
+                        Console.WriteLine("Escoja un aopcion correcta");
+                        break;
                 }
+               
 
-            } while (opcion!=0);
+            } while ((Opcion)opcion!=Opcion.Salir);
 
-            fichero.Close();
-            flujo.Close();
         }
     }
 }
