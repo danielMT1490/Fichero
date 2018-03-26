@@ -21,5 +21,27 @@ namespace Fichero
             this.Dni = dni;
         }
         public Alumno() { }
+
+        public override bool Equals(object obj)
+        {
+            var alumno = obj as Alumno;
+            return alumno != null &&
+                   Id == alumno.Id &&
+                   Nombre == alumno.Nombre &&
+                   Apellidos == alumno.Apellidos &&
+                   Dni == alumno.Dni;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -818402288;
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Nombre);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Apellidos);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Dni);
+            return hashCode;
+        }
+
+
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fichero
 {
-    public interface IFormato
+    public abstract class Format
     {
-        string CambiarFormato();
+        public abstract void AddAlumno(string path , Alumno alumno);
     }
 }

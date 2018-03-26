@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fichero
 {
-    public interface IRegistro
-    {
-        void RegistroTxt();
-        void RegistroJson();
-    }
+    public enum TypeFormat { txt = 1, json, xml }
+    public enum MenuOption { ChangeFormat=1,CreateAlumno,Exit}
+   
 }
