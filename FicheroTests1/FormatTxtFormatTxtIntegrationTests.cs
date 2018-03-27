@@ -21,7 +21,8 @@ namespace Fichero.Tests
         public void AddAlumnoTxtTest(int id, string nombre, string apellido, string dni)
         {
             string path = "Registro.txt";
-            Alumno al = new Alumno(id, nombre, apellido, dni);
+            Guid guid = Guid.NewGuid();
+            Alumno al = new Alumno(guid,id, nombre, apellido, dni);
             FormatTxt ft = new FormatTxt();
             ft.AddAlumno(path,al);
             Assert.IsTrue(File.Exists(path));
@@ -38,7 +39,7 @@ namespace Fichero.Tests
                     while ( (line = sw.ReadLine())!=null)
                     {
                         string[] lines = line.Split(',');
-                        registrado = new Alumno(Convert.ToInt32(lines[0]), lines[1], lines[2], lines[3]);
+                        registrado = new Alumno(guid,Convert.ToInt32(lines[0]), lines[1], lines[2], lines[3]);
                         Alumnos.Add(registrado);
                     }
 

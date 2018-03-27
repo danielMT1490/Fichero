@@ -59,6 +59,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AlumnoAlumnoIntegrationTests.cs" />
     <Compile Include="FormatJsonFormatJsonIntegrationTests.cs" />
     <Compile Include="FormatTxtFormatTxtIntegrationTests.cs" />
     <Compile Include="FormatXmlFormatXmlIntegrationTests.cs" />

@@ -21,7 +21,8 @@ namespace Fichero
             string apellido = Console.ReadLine();
             Console.WriteLine("Escriba el dni del Alumno:");
             string dni = Console.ReadLine();
-            Alumno a1 = new Alumno(id, nombre, apellido, dni);
+            Guid guid = Guid.NewGuid();
+            Alumno a1 = new Alumno(guid,id, nombre, apellido, dni);
             return a1;
         }
     }
