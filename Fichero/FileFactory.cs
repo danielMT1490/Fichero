@@ -18,29 +18,29 @@ namespace Fichero
             switch ((TypeFormat)Enum.Parse(typeof(TypeFormat),format))
             {
                 case TypeFormat.txt:
-                    return  ft =CreateFormatTxt();
+                    return  ft =CreateFormatTxt(format);
                 case TypeFormat.json:
-                    return ft=CreateFormatJson();
+                    return ft=CreateFormatJson(format);
                 case TypeFormat.xml:
-                    return ft=CreateFormatXml();
+                    return ft=CreateFormatXml(format);
 
             }
             return ft = null;
         }
         
-        public override Format CreateFormatJson()
+        public override Format CreateFormatJson(string format)
         {
-            return new FormatJson();
+            return new FormatJson(format);
         }
 
-        public override Format CreateFormatTxt()
+        public override Format CreateFormatTxt(string format)
         {
-            return new FormatTxt();
+            return new FormatTxt(format);
         }
 
-        public override Format CreateFormatXml()
+        public override Format CreateFormatXml(string format)
         {
-            return new FormatXml();
+            return new FormatXml(format);
         }
     }
 }

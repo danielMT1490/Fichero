@@ -12,8 +12,7 @@ namespace Fichero
         public void GetMenu()
         {
             int option;
-            string valueAppConfig = ConfigurationManager.AppSettings["TypeFormat"];
-            string format = Environment.GetEnvironmentVariable(valueAppConfig, EnvironmentVariableTarget.User);
+            string format = Format.GetFormat();
             do
             {
                 Console.WriteLine($"El formato de Resgistro es {format}");
@@ -33,16 +32,17 @@ namespace Fichero
                         switch ((TypeFormat)Enum.Parse(typeof(TypeFormat), format))
                         {
                             case TypeFormat.txt:
-                                 file = fl.CreateFormatTxt();
-                                 file.AddAlumno("Registro.txt", Registro.CrearAlumno());
+                                 
+                                 file = fl.CreateFormatTxt(format);
+                                 file.Add( Registro.CrearAlumno());
                                 break;
                             case TypeFormat.json:
-                                file = fl.CreateFormatJson();
-                                file.AddAlumno("Registro.json", Registro.CrearAlumno());
+                                file = fl.CreateFormatJson(format);
+                                file.Add( Registro.CrearAlumno());
                                 break;
                             case TypeFormat.xml:
-                                file = fl.CreateFormatXml();
-                                file.AddAlumno("Registro.xml", Registro.CrearAlumno());
+                                file = fl.CreateFormatXml(format);
+                                file.Add( Registro.CrearAlumno());
                                 break;
 
                         }

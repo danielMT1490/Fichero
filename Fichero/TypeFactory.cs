@@ -8,9 +8,9 @@ namespace Fichero
 {
     public abstract class TypeFactory
     {
-        public abstract Format CreateFormatTxt();
-        public abstract Format CreateFormatJson();
-        public abstract Format CreateFormatXml();
+        public abstract Format CreateFormatTxt(string format);
+        public abstract Format CreateFormatJson(string format);
+        public abstract Format CreateFormatXml(string format);
 
     }
 }

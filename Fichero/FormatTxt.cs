@@ -10,11 +10,12 @@ namespace Fichero
 {
     public class FormatTxt : Format
     {
-        public override void AddAlumno(string path, Alumno alumno)
+        public string Path { get; set; }
+        public override void Add( Alumno alumno)
         {
-            if (File.Exists(path))
+            if (File.Exists(Path))
             {
-                using (Stream st = new FileStream(path, FileMode.Append, FileAccess.Write))
+                using (Stream st = new FileStream(Path, FileMode.Append, FileAccess.Write))
                 {
                     using (StreamWriter wrt = new StreamWriter(st))
                     {
@@ -27,7 +28,7 @@ namespace Fichero
             }
             else
             {
-                using (Stream st = new FileStream(path, FileMode.Create, FileAccess.Write))
+                using (Stream st = new FileStream(Path, FileMode.Create, FileAccess.Write))
                 {
                     using (StreamWriter wrt = new StreamWriter(st))
                     {
@@ -37,6 +38,11 @@ namespace Fichero
                     }
                 }
             }  
+        }
+
+        public FormatTxt(string format)
+        {
+            this.Path = String.Format($"Registro.{format}");
         }
     }
 }

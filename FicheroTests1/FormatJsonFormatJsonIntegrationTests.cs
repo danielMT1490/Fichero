@@ -25,11 +25,10 @@ namespace Fichero.Tests
         {
 
             string path_test = "C:/Users/Daniel Madrigal/Downloads/Fichero/FicheroTests1/bin/Debug/Registro.json";
-            string path = "Registro.json";
             Guid guid = Guid.NewGuid();
             Alumno al = new Alumno(guid,id, nombre, apellido, dni);
-            FormatJson ft = new FormatJson();
-            ft.AddAlumno(path, al);
+            FormatJson ft = new FormatJson("json");
+            ft.Add(al);
             Assert.IsTrue(File.Exists(path_test));
 
             List<Alumno> alumnos = new List<Alumno>();

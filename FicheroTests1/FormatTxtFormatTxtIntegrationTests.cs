@@ -20,11 +20,11 @@ namespace Fichero.Tests
         [TestMethod]
         public void AddAlumnoTxtTest(int id, string nombre, string apellido, string dni)
         {
-            string path = "Registro.txt";
+            string path = "C:/Users/Daniel Madrigal/Downloads/Fichero/FicheroTests1/bin/Debug/Registro.txt";
             Guid guid = Guid.NewGuid();
             Alumno al = new Alumno(guid,id, nombre, apellido, dni);
-            FormatTxt ft = new FormatTxt();
-            ft.AddAlumno(path,al);
+            FormatTxt ft = new FormatTxt("txt");
+            ft.Add(al);
             Assert.IsTrue(File.Exists(path));
 
 
@@ -46,6 +46,7 @@ namespace Fichero.Tests
 
                 }
             }
+            
             foreach (var i in Alumnos)
             {
                 if (al.Equals(i)) Encontrado = true;

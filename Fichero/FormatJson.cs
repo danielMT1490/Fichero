@@ -10,15 +10,15 @@ namespace Fichero
 {
     public class FormatJson : Format
     {
+        public string Path { get; set; }
         
-        
-        public override void AddAlumno(string path, Alumno alumno)
+        public override void Add( Alumno alumno)
         {
             List<Alumno> Alumnos = new List<Alumno>();
 
-                if (File.Exists(path))
+                if (File.Exists(Path))
                 {
-                    using (Stream st = new FileStream(path, FileMode.Open, FileAccess.Read))
+                    using (Stream st = new FileStream(Path, FileMode.Open, FileAccess.Read))
                     {
                         using (StreamReader rd = new StreamReader(st))
                         {
@@ -26,7 +26,7 @@ namespace Fichero
                             Alumnos = JsonConvert.DeserializeObject<List<Alumno>>(lista);
                         }
                     }
-                    using (Stream st = new FileStream(path, FileMode.Create, FileAccess.Write))
+                    using (Stream st = new FileStream(Path, FileMode.Create, FileAccess.Write))
                     {
 
                         using (StreamWriter wrt = new StreamWriter(st))
@@ -39,7 +39,7 @@ namespace Fichero
                 }
                 else
                 {
-                    using (Stream st = new FileStream(path, FileMode.Create, FileAccess.Write))
+                    using (Stream st = new FileStream(Path, FileMode.Create, FileAccess.Write))
                     {
                         using (StreamWriter wrt = new StreamWriter(st))
                         {
@@ -52,6 +52,10 @@ namespace Fichero
                     }
                 }
             
+        }
+        public FormatJson(string format)
+        {
+            this.Path = String.Format($"Registro.{format}");
         }
     }
 }
